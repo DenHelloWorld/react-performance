@@ -65,7 +65,7 @@
 ### Interaction B: Search countries
 
 - **Commit duration**: [N/A](https://discord.com/channels/794806036506607647/1333748258098380820/1515111545905090610) (In short, let's just focus on the "Render duration" metric in the report for now. By the next iteration, I'll adjust it to something like: "Number of commits + duration per commit.")
-- **Render duration**: 50.6 ms
+- **Render duration**: 37.9 ms
 - **Screenshot**:
   - ***Virtualization and proper keys***
 
@@ -78,6 +78,10 @@
   - ***Event handlers (useCallback) + React.memo***
 
   ![screenshot](optimized-b-3-usecallback.png)
+
+  - ***Controls component isolation (React.memo)***
+
+  ![screenshot](optimized-b-4-controls.png)
 ---
 
 ### Interaction C: Change year
@@ -97,7 +101,7 @@
 ### Interaction D: Toggle column
 
 - **Commit duration**: [N/A](https://discord.com/channels/794806036506607647/1333748258098380820/1515111545905090610) (In short, let's just focus on the "Render duration" metric in the report for now. By the next iteration, I'll adjust it to something like: "Number of commits + duration per commit.")
-- **Render duration**: 23.4 ms
+- **Render duration**: 16.5 ms
 - **Screenshot**:
   - ***Virtualization and proper keys***
 
@@ -110,6 +114,10 @@
   - ***Event handlers (useCallback) + React.memo***
 
   ![screenshot](optimized-d-3-usecallback.png)
+
+  - ***Controls component isolation (React.memo)***
+
+  ![screenshot](optimized-d-4-controls.png)
 ---
 
 ## Comparison
@@ -117,6 +125,6 @@
 | Interaction    | Before (ms) | After (ms) | Improvement |
 |----------------|-------------|------------|-------------|
 | Sort countries | 404         | 75.7       | −81%        |
-| Search         | 197.5       | 50.6       | −74%        |
+| Search         | 197.5       | 37.9       | −81%        |
 | Change year    | 468.8       | 80.5       | −83%        |
-| Toggle column  | 377.3       | 23.4       | −94%        |
+| Toggle column  | 377.3       | 16.5       | −96%        |
