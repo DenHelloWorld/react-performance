@@ -124,7 +124,7 @@
 
 | Interaction    | Before (ms) | After (ms) | Improvement |
 |----------------|-------------|------------|-------------|
-| Sort countries | 404         | 75.7       | −81%        |
-| Search         | 197.5       | 37.9       | −81%        |
-| Change year    | 468.8       | 80.5       | −83%        |
-| Toggle column  | 377.3       | 16.5       | −96%        |
+| Sort countries | 404         | 75.7       | 81%         |
+| Search         | 197.5       | 37.9       | 81%         |
+| Change year    | 468.8       | 80.5       | 83%         |
+| Toggle column  | 377.3       | 16.5       | 96%         |
