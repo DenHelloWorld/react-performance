@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, memo } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import type { Country } from '../../types';
 import { CountryCard } from '../country-card/country-card';
@@ -17,7 +17,7 @@ type CountryListProps = {
   onYearChange: (year: number) => void;
 };
 
-export const CountryList = ({
+export const CountryList = memo(({
   countries,
   searchQuery,
   selectedColumns,
@@ -78,4 +78,5 @@ export const CountryList = ({
       </div>
     </div>
   );
-};
+});
+CountryList.displayName = 'CountryList';
