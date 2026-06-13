@@ -8,7 +8,7 @@
 - **Render duration**: 404 ms
 - **Screenshot**:
 
-  ![screenshot](img.png)
+  ![screenshot](baseline-a.png)
 
 ---
 
@@ -18,7 +18,7 @@
 - **Render duration**: 197.5 ms
 - **Screenshot**:
 
-  ![screenshot](img_1.png)
+  ![screenshot](baseline-b.png)
 
 ---
 
@@ -28,7 +28,7 @@
 - **Render duration**: 468.8 ms
 - **Screenshot**:
 
-  ![screenshot](img_2.png)
+  ![screenshot](baseline-c.png)
 
 ---
 
@@ -38,7 +38,7 @@
 - **Render duration**: 377.3 ms
 - **Screenshot**:
 
-  ![screenshot](img_3.png)
+  ![screenshot](baseline-d.png)
 
 ---
 
@@ -47,16 +47,19 @@
 ### Interaction A: Sort countries
 
 - **Commit duration**: [N/A](https://discord.com/channels/794806036506607647/1333748258098380820/1515111545905090610) (In short, let's just focus on the "Render duration" metric in the report for now. By the next iteration, I'll adjust it to something like: "Number of commits + duration per commit.")
-- **Render duration**: 94.1 ms
+- **Render duration**: 75.7 ms
 - **Screenshot**:
   - ***Virtualization and proper keys***
   
-  ![screenshot](img_4.png)
+  ![screenshot](optimized-a-1-virtualization.png)
 
   - ***Computed values (useMemo)***
 
-  ![img_8.png](img_8.png)
+  ![screenshot](optimized-a-2-usememo.png)
 
+  - ***Event handlers (useCallback) + React.memo***
+
+  ![screenshot](optimized-a-3-usecallback.png)
 ---
 
 ### Interaction B: Search countries
@@ -66,11 +69,15 @@
 - **Screenshot**:
   - ***Virtualization and proper keys***
 
-  ![screenshot](img_5.png)
+  ![screenshot](optimized-b-1-virtualization.png)
 
   - ***Computed values (useMemo)***
   
-  ![img_9.png](img_9.png)
+  ![screenshot](optimized-b-2-usememo.png)
+
+  - ***Event handlers (useCallback) + React.memo***
+
+  ![screenshot](optimized-b-3-usecallback.png)
 ---
 
 ### Interaction C: Change year
@@ -80,32 +87,36 @@
 - **Screenshot**:
   - ***Virtualization and proper keys***
 
-  ![screenshot](img_6.png)
+  ![screenshot](optimized-c-1-virtualization.png)
 
   - ***Computed values (useMemo)***
 
-  ![img_10.png](img_10.png)
+  ![screenshot](optimized-c-2-usememo.png)
 ---
 
 ### Interaction D: Toggle column
 
 - **Commit duration**: [N/A](https://discord.com/channels/794806036506607647/1333748258098380820/1515111545905090610) (In short, let's just focus on the "Render duration" metric in the report for now. By the next iteration, I'll adjust it to something like: "Number of commits + duration per commit.")
-- **Render duration**: 33.4 ms
+- **Render duration**: 23.4 ms
 - **Screenshot**:
   - ***Virtualization and proper keys***
 
-  ![screenshot](img_7.png)
+  ![screenshot](optimized-d-1-virtualization.png)
 
   - ***Computed values (useMemo)***
 
-  ![img_11.png](img_11.png)
+  ![screenshot](optimized-d-2-usememo.png)
+
+  - ***Event handlers (useCallback) + React.memo***
+
+  ![screenshot](optimized-d-3-usecallback.png)
 ---
 
 ## Comparison
 
 | Interaction    | Before (ms) | After (ms) | Improvement |
 |----------------|-------------|------------|-------------|
-| Sort countries | 404         | 94.1       | −77%        |
+| Sort countries | 404         | 75.7       | −81%        |
 | Search         | 197.5       | 50.6       | −74%        |
 | Change year    | 468.8       | 80.5       | −83%        |
-| Toggle column  | 377.3       | 33.4       | −91%        |
+| Toggle column  | 377.3       | 23.4       | −94%        |
