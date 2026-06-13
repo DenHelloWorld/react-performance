@@ -1,10 +1,8 @@
 import { useState, useMemo, useCallback } from 'react';
 import { useCo2Data } from '../../hooks/useCo2Data';
 import { LoadingSpinner } from '../loading-spinner/loading-spinner';
-import { SearchBar } from '../search-bar/search-bar';
-import { YearSelector } from '../year-selector/year-selector';
+import { Controls } from '../controls/controls';
 import { CountryList } from '../country-list/country-list';
-import { ColumnModal } from '../column-modal/column-modal';
 import { getAvailableYears, getAvailableColumns } from '../../utils/data-transformers';
 
 import styles from './app.module.css';
@@ -83,35 +81,23 @@ export const App = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>CO₂ Emissions Data Explorer</h1>
 
-      {/* Controls */}
-      <div className={styles.controls}>
-        <SearchBar value={state.searchQuery} onChange={handleSearch} />
-        <YearSelector year={state.selectedYear} years={years} onChange={handleYearChange} />
+      <Controls
+        searchQuery={state.searchQuery}
+        selectedYear={state.selectedYear}
+        years={years}
+        sortField={state.sortField}
+        sortOrder={state.sortOrder}
+        selectedColumns={state.selectedColumns}
+        availableColumns={availableColumns}
+        isColumnModalOpen={state.isColumnModalOpen}
+        onSearch={handleSearch}
+        onYearChange={handleYearChange}
+        onSortFieldChange={handleSortFieldChange}
+        onSortOrderToggle={handleSortOrderToggle}
+        onColumnToggle={handleColumnToggle}
+        onModalToggle={handleModalToggle}
+      />
 
-        <div className={styles.sortContainer}>
-          <label className={styles.sortLabel}>Sort by:</label>
-          <select
-            value={state.sortField}
-            onChange={(e) => handleSortFieldChange(e.target.value as 'name' | 'population')}
-            className={styles.sortSelect}
-          >
-            <option value="population">Population</option>
-            <option value="name">Name</option>
-          </select>
-
-          <button onClick={handleSortOrderToggle} className={styles.sortButton}>
-            {state.sortOrder === 'asc' ? 'Ascending' : 'Descending'}
-          </button>
-        </div>
-
-        <div className={styles.columnButtonContainer}>
-          <button onClick={handleModalToggle} className={styles.columnButton}>
-            Select columns ({state.selectedColumns.length} selected)
-          </button>
-        </div>
-      </div>
-
-      {/* Country List */}
       <CountryList
         countries={data}
         searchQuery={state.searchQuery}
@@ -121,15 +107,6 @@ export const App = () => {
         sortField={state.sortField}
         sortOrder={state.sortOrder}
         onYearChange={handleYearChange}
-      />
-
-      {/* Column Modal */}
-      <ColumnModal
-        isOpen={state.isColumnModalOpen}
-        availableColumns={availableColumns}
-        selectedColumns={state.selectedColumns}
-        onToggle={handleColumnToggle}
-        onClose={handleModalToggle}
       />
     </div>
   );
